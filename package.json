@@ -1,17 +1,13 @@
 {
-  "name": "rainfall-api",
+  "name": "weather-report",
   "version": "1.0.0",
-  "description": "API to serve latest rainfall data from CSV",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": ["rainfall", "csv", "api", "nodejs"],
-  "author": "Shravan AY",
-  "license": "MIT",
   "dependencies": {
-    "csv-parser": "^3.0.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "csv-parser": "^3.0.0"
   }
 }
 
