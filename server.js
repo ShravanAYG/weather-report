@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const CSV_FILE = './out20250616081734_st2025051501_ed2025061601_regionNum105_16_247_704.csv';
 
-app.get('/latest', (req, res) => {
+function getLatestData(res) {
   const rows = [];
 
   fs.createReadStream(CSV_FILE)
@@ -34,6 +34,15 @@ app.get('/latest', (req, res) => {
       console.error('CSV Read Error:', err);
       res.status(500).json({ error: 'Failed to read CSV' });
     });
+}
+
+// 👇 Respond to both "/" and "/latest"
+app.get('/', (req, res) => {
+  getLatestData(res);
+});
+
+app.get('/latest', (req, res) => {
+  getLatestData(res);
 });
 
 app.listen(PORT, () => {
