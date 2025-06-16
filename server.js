@@ -2,9 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const csv = require('csv-parser');
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-const CSV_FILE = 'out20250616081734_st2025051501_ed2025061601_regionNum105_16_247_704.csv';
+const PORT = process.env.PORT || 3000;
+const CSV_FILE = './out20250616081734_st2025051501_ed2025061601_regionNum105_16_247_704.csv';
 
 app.get('/latest', (req, res) => {
   const rows = [];
@@ -31,12 +31,12 @@ app.get('/latest', (req, res) => {
       });
     })
     .on('error', (err) => {
-      console.error('Error reading CSV:', err);
-      res.status(500).json({ error: 'Internal Server Error' });
+      console.error('CSV Read Error:', err);
+      res.status(500).json({ error: 'Failed to read CSV' });
     });
 });
 
 app.listen(PORT, () => {
-  console.log(`API server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
