@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const csv = require('csv-parser');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const CSV_FILE = 'out20250616081734_st2025051501_ed2025061601_regionNum105_16_247_704.csv';
 
